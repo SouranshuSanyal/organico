@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}User List{% endblock %}
+    {% block content %}
+        <h1 align = "center">USER LIST</h1>
+        <ul class = 'list-group list-group-flush' id = 'userlist'>
+            {% for user in users %}
+                <li class = 'list-group-item' id='user'>
+                    {{ user.name }} -- {{ user.phoneNumber }} -- {{ user.email }} -- {{ user.role }}
+                    <button type = "button" class = 'close' onClick = "deleteUser({{ user.id }})">
+                        <span aria-hidden = 'true'>&times;</span>
+                    </button>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}

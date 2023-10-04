@@ -1,0 +1,154 @@
+<div class="navbar-nav">
+    <a class="nav-item nav-link" id="home" href="/">Home</a>
+    <a class="nav-item nav-link" id="Fruits" href="/fruits">Fruits</a>
+    <a class="nav-item nav-link" id="Vegetables" href="/vegetables">Vegetables</a>
+    <a class="nav-item nav-link" id="Flowers" href="/flowers">Flowers</a>
+    <a class="nav-item nav-link" id="cart" href="/cart">Cart</a>
+    <a class="nav-item nav-link" id="logout" href="/logout">Logout (Static)</a>
+    <a align='right' class="nav-item nav-link" id="login" href="/login">Login (Static)</a>
+    <a class="nav-item nav-link" id="signUp" href="/signup">Sign Up (Static)</a>
+    <a class="nav-item nav-link" id="signUp" href="/adminsignup">Admin Sign Up (Static)</a>
+</div>
+
+<div class="navbar-nav">
+    <a class="nav-item nav-link" id="home" href="/">Home</a>
+    <a class="nav-item nav-link" id="Fruits" href="/fruits">Fruits</a>
+    <a class="nav-item nav-link" id="Vegetables" href="/vegetables">Vegetables</a>
+    <a class="nav-item nav-link" id="Flowers" href="/flowers">Flowers</a>
+    <a class="nav-item nav-link" id="cart" href="/cart">Cart</a>
+    {% if current_user.is_authenticated == True %}
+      <a class="nav-item nav-link" id="logout" href="/logout">Logout</a>
+    
+    {% else %}
+      <a class="nav-item nav-link" id="login" href="/login">Login</a>
+      <a class="nav-item nav-link" id="signUp" href="/signup">Sign Up</a>
+      <a class="nav-item nav-link" id="signUp" href="/adminsignup">Admin Sign Up</a>
+    {% endif %}
+  </div>
+
+  # @property
+  # def is_active(self):
+  #     return True
+  
+  # def get_id(self):
+  #     return str(self.id)
+  
+  # @property
+  # def is_authenticated(self):
+  #     return True  # Users loaded from the DB are always authenticated
+
+  # @property
+  # def is_anonymous(self):
+  #     return False
+  
+  
+  <td><a href = '{{ url_for('views.deleteproduct', cart_id = cartitems.id)}}' class = 'btn btn-danger'>Delete</a></td>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  def myorders():
+  
+  user_order = Order.query.filter_by(user_id=current_user.id).first()
+    if not user_order:
+        # This user has no cart yet.
+        flash('Your have no  orders.', category='info')
+        return render_template('myorders.html', myorders=[])
+    myorders = OrderItem.query.filter_by(user_id=user_order.id).all()
+    
+    
+    def myorders():
+    myorders = Order.query.filter_by(user_id=current_user.id).all()
+    return render_template('myorders.html', myorders=myorders)
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  # Fetch order details using order_id
+    order = Order.query.get_or_404(order_id)
+
+    # Ensure the order belongs to the current user
+    if order.user_id != current_user.id:
+        abort(403)  # Forbidden
+
+    # Render an HTML template with the order details
+    rendered = render_template('bill_template.html', order=order)
+    
+    # Convert the HTML to a PDF
+    pdf = pdfkit.from_string(rendered, False)
+
+    # Create a response to send the PDF back
+    response = make_response(pdf)
+    response.headers['Content-Type'] = 'application/pdf'
+    response.headers['Content-Disposition'] = f'inline; filename=bill_{order_id}.pdf'
+    
+    return response
+  
+
+from flask_login import LoginManager
+
+login_manager = LoginManager()
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+login_manager.init_app(create_app)
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  @views.route('/myorders')
+@login_required
+def myorders():
+    user_order = Order.query.filter_by(user_id=current_user.id).first()
+    if not user_order:
+        # This user has no cart yet.
+        flash('Your have no  orders.', category='info')
+        return render_template('myorders.html', myorders=[])
+    myorders = OrderItem.query.all()
+    return render_template('myorders.html', myorders=myorders)
+
+@views.route('/delete_order/<int:order_id>')
+@login_required
+def deleteorder(order_id):
+    delete_order = Order.query.get_or_404(order_id)
+    db.session.delete(delete_order)
+    db.session.commit()
+    flash('Order deleted successfully!', 'success')
+    return redirect(url_for('views.myorders'))

@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Edit Quantity{% endblock %}
+{% block content %}
+<h2 align = 'center'>EDIT QUANTITY</h2>
+<form method="post">
+    <div class="form-group">
+        <label for="productName">Product Name</label>
+        <input type="text" name="productName" id="productName" class="form-control" value="{{ cartitem.product.productName }}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" value="{{ cartitem.product.quantity }}" min="1" max="{{ cartitem.product.stock }}"  class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Update</button>
+</form>
+{% endblock %}

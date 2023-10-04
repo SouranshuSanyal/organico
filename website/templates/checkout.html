@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Checkout{% endblock %}
+    {% block content %}
+        <h1 align = 'center'>ENTER YOUR ADDRESS</h1>
+        <br>
+        <br>
+        <form method="post" class = 'form-group' style = 'margin-left: 20px'>
+            <div>
+                <label>Address Line 1:</label>
+                <input type="text" class= 'form-control' name="address_line1" placeholder = 'Enter Your Address Line 1' required>
+            </div>
+            <br>
+            <br>
+            <div>
+                <label>Address Line 2 (Optional):</label>
+                <input type="text" class= 'form-control' name="address_line2" placeholder = 'Enter Your Address Line 2'>
+            </div>
+            <br>
+            <br>
+            <div>
+                <label>City:</label>
+                <input type="text" class= 'form-control' name="city" placeholder = 'Enter Your City' >
+            </div>
+            <br>
+            <br>
+            <div>
+                <label>State:</label>
+                <input type="text" class= 'form-control' name="state" placeholder = 'Enter Your State'>
+            </div>
+            <br>
+            <br>
+            <div>
+                <label>Postal Code:</label>
+                <input type="number" class= 'form-control' name="postal_code" placeholder = 'Enter Your Postal Code'>
+            </div>
+            <br>
+            <br>
+            <div>
+                <label>Country:</label>
+                <input type="text" class= 'form-control' name="country" placeholder = 'Enter Your Country'>
+            </div>
+            <br>
+            <br>
+            <div>
+                <button type="submit" id ='submit' align = 'center' class = 'btn btn-primary'>Confirm Order</button>
+            </div>
+        </form>
+    {% endblock %}

@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%block title%}Login{%endblock%}
+{%block content%}
+<form method = 'POST'>
+    <h3 align = 'center'>LOG IN</h3>
+
+
+    <div class = 'form-group'>
+        <label for = 'phoneNumber'> Phone Number </label>
+        <input type = 'number' class = 'form-control' id = 'phoneNumber' name = 'phoneNumber' placeholder = 'Enter your Phone Number'/>
+    </div>
+
+    <div class = 'form-group'>
+        <label for = 'password'> Password </label>
+        <input type = 'password' class = 'form-control' id = 'password' name = 'password' placeholder = 'Enter your Password'/>
+    </div><br>
+
+    <div align = 'center'>
+    <button type = "submit" id ='submit' class = 'btn btn-primary' align = 'center'> Submit </button>
+    <button type = "reset" id ='reset' class = 'btn btn-primary' align = 'center'> Reset </button>
+    </div>
+    
+</form>
+{%endblock%}

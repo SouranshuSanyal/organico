@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Fruits{% endblock %}
+    {% block content %}
+        <h1 align = "center">Shop Fruits FROM ORGANICO</h1>
+        <br>
+        <br>
+        <ul class = 'list-group list-group-flush' id = 'fruitlist'>
+            {% for fruit in fruits %}
+                <li class = 'list-group-item' id='flower'>
+                    {{ fruit.productName }} -- ₹ {{ fruit.productPrice }}
+                    <button onclick="addToCart('{{ fruit.id }}')"
+                            style='margin-left: 20px'
+                            class='btn btn-primary float-right'>Add to Cart</button>
+                    <input type="number"
+                           name='quantity'
+                           id="quantity-{{ fruit.id }}"
+                           value="1"
+                           min="1"
+                           max="{{ fruit.stock }}"
+                           class='form-group float-right'>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{%block title%}Product List{%endblock%}
+{%block content%}
+
+<h1 align = 'center'> PRODUCT LIST </h1><br><br>
+<table class='table table-striped table-hover' id = 'products' name = 'products'>
+    <thead class = 'thead-dark' align = 'center'>
+        <tr>
+            <th scope = 'col'>Product ID</th>
+            <th scope = 'col'>Product Name</th>
+            <th scope = 'col'>Product Price</th>
+            <th scope = 'col'>Category</th>
+            <th scope = 'col'>Stock</th>
+            <th scope = 'col' >Action</th>
+        </tr>
+    </thead>
+<tbody >
+{%for product in products %}
+
+<tr align = 'center'>
+    <td scope = 'row'>{{ product.productID }}</td>
+    <td>{{ product.productName }}</td>
+    <td>₹ {{ product.productPrice }}/unit</td>
+    <td>{{ product.category }}</td>
+    <td>{{ product.stock }}</td>
+    <td> <a href="{{ url_for('views.edit_product', product_id=product.id) }}" class="btn btn-warning">Edit</a>
+        <a href = '{{ url_for('views.deleteproduct', product_id = product.id)}}' class = 'btn btn-danger'>Delete</a></td>
+</tr>
+
+
+{%endfor%}
+</tbody>
+</table>
+
+{%endblock%}

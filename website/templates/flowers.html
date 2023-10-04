@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{%block title%}Flowers{%endblock%}
+{%block content%}
+<h1 align = "center"> SHOP FLOWERS FROM ORGANICO </h1><br><br>
+<ul class = 'list-group list-group-flush' id = 'flowerlist'>
+{% for flower in flowers %}
+<li class = 'list-group-item' id='flower'>
+    {{flower.productName}} -- ₹{{flower.productPrice}}
+    <button onclick="addToCart('{{ flower.id }}')" style='margin-left: 20px' class = 'btn btn-primary float-right'>Add to Cart</button>
+    <input type="number" name = 'quantity' id="quantity-{{ flower.id }}" value="1" min="1" max="{{ flower.stock }}" class = 'form-group float-right'>
+    
+    
+
+</li>
+{%endfor%}
+</ul>
+{%endblock%}

@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%block title%}Sign Up{%endblock%}
+{%block content%}
+
+<form method = 'POST'>
+    <h3 align = 'center'>REGISTER</h3>
+
+    <div class = 'form-group'>
+        <label for = 'email'> Email Address </label>
+        <input type = 'email' class = 'form-control' id = 'email' name = 'email' placeholder = 'Enter your Email'/>
+    </div>
+
+    <div class = 'form-group'>
+        <label for = 'Name'> Name </label>
+        <input type = 'text' class = 'form-control' id = 'name' name = 'name' placeholder = 'Enter your Name'/>
+    </div>
+
+    <div class = 'form-group'>
+        <label for = 'phoneNumber'> Phone Number </label>
+        <input type = 'number' class = 'form-control' id = 'phoneNumber' name = 'phoneNumber' placeholder = 'Enter your Phone Number'/>
+    </div>
+
+    <div class = 'form-group'>
+        <label for = 'password'> Password </label>
+        <input type = 'password' class = 'form-control' id = 'password' name = 'password' placeholder = 'Enter your Password'/>
+    </div>
+
+    <div class = 'form-group'>
+        <label for = 'cnfpassword'> Confirm Your Password </label>
+        <input type = 'text' class = 'form-control' id = 'cnfpassword' name = 'cnfpassword' placeholder = 'Re - enter your password'/>
+    </div><br>
+
+    <div align = 'center'>
+    <button type = "submit" class = 'btn btn-primary' align = 'center'> Submit </button>
+    <button type = "reset" class = 'btn btn-primary' align = 'center'> Reset </button>
+    </div>
+    
+</form>
+
+{%endblock%}

@@ -1,0 +1,44 @@
+{% macro calc_total(order_items) %}
+    {% set ns = namespace(total=0) %}
+    {% for order_item in order_items %}
+        {% set ns.total = ns.total + order_item.total_price %}
+    {% endfor %}
+    {{ ns.total }}
+{% endmacro %}
+
+<h2 align='center'>ORDER DETAILS</h2>
+<p>Order ID: {{ order.order_id }}</p>
+<p>Order Date: {{ order.order_date.strftime('%Y-%m-%d %H:%M') }}</p>
+
+<link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous" />
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+          crossorigin="anonymous" />
+
+<table class="table table-striped">
+    <thead class = 'thead-dark' align = 'center'>
+        <tr>
+            <th scope = 'col'>Product Name</th>
+            <th scope = 'col'>Price per Unit</th>
+            <th scope = 'col'>Quantity</th>
+            <th scope = 'col'>Subtotal</th>
+        </tr>
+    </thead>
+    <tbody align = 'center'>
+        {% for order_item in order.order_items %}
+        <tr>
+            <td scope = 'row'>{{ order_item.product.productName }}</td>
+            <td>&#8377; {{ order_item.product.productPrice }}</td>
+            <td>{{ order_item.quantity }}</td>
+            <td>&#8377; {{ order_item.total_price }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h3 align='right' style='margin-left: 20px'>Total Bill: &#8377; {{ calc_total(order.order_items) }}</h3>
+<br><br>
+<h6 align = 'center'>End of Bill.<br>Thank You for Shopping with us !!!</h6>

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{%block title%}Admin Dashboard{%endblock%}
+{%block content%}
+
+<h3 align = 'center'> Hello Admin </h3><br><br>
+<h5 align  = 'center'>Where you want to go?</h5><br><br>
+
+    <div align = 'center'>
+        <a class = 'btn btn-primary' id = 'addproduct' align = 'center'  href='/addproduct' style = 'margin-right: 10px' >Add product</a>
+        <a class = 'btn btn-primary' id = 'productlist' align = 'center' href='/productlist' style = 'margin-right: 10px'>Product List</a>
+        <a class = 'btn btn-primary' id = 'userlist' align = 'center' href='/userlist' style = 'color:white'>User List</a>
+    </div>
+
+{%endblock%}
