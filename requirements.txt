@@ -19,7 +19,7 @@ EditorConfig==0.12.3
 Flask==2.2.5
 Flask-Login==0.6.2
 Flask-Mail==0.9.1
-Flask-SQLAlchemy==3.1.1
+Flask-SQLAlchemy==3.0.5
 fonttools==4.38.0
 greenlet==2.0.2
 html-tag-names==0.1.2
