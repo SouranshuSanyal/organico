@@ -33,7 +33,7 @@ json5==0.9.14
 kiwisolver==1.4.4
 MarkupSafe==2.1.2
 matplotlib==3.5.3
-numpy==1.24.2
+numpy==1.21.6
 packaging==23.0
 pathspec==0.11.2
 pdfkit==1.0.0
